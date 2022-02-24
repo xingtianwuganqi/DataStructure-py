@@ -47,10 +47,15 @@ class Sequence_Table():
 		if index < 0 or index > self.length:
 			return 
 		self.length += 1
+		# print('self.length-1',self.length-1)
+		# print('index:',index)
 		for i in range(self.length - 1,index, -1):
-			temp = self.data[i]
+			# print(i)
+			temp = self.data[i] # 先把None拿出来
+			# print('self.data[i-1]',self.data[i-1])
 			self.data[i] = self.data[i-1]
-			self.data[i-1] = temp
+			self.data[i-1] = temp # 再把None放到移开的地方
+			# print('temp',temp)
 		self.data[index] = num
 
 
@@ -59,11 +64,13 @@ class Sequence_Table():
 		if self.length < 0:
 			return
 		for i in range(index,self.length-1):
+			print('i:',i)
 			temp = self.data[i]
+			print(temp)
 			self.data[i] = self.data[i+1]
 			self.data[i + 1] = temp
-
-		self.data[self.length - 1] = 0
+			self.printAllNum
+		self.data[self.length-1] = None
 		self.length -= 1
 
 
@@ -79,11 +86,14 @@ if __name__ == "__main__":
 
 	# 按索引查找
 	num = seq_t.selectByIndex(2)
-	print(num)
 
 	# 按数字查下标
 	index = seq_t.selectByNum(2)
-	print(index)
+
+	# 按下标插入
+	seq_t.insertNumByIndex(4,2)
+	seq_t.printAllNum()
+
 
 	# 按下标删除
 	seq_t.delectNumByIndex(2)
