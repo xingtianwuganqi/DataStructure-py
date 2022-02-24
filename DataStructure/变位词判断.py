@@ -29,28 +29,7 @@ def anagramSolution1(s1,s2):
 
 	return stillOK
 
-def anagram(s1,s2):
-    s2=list(s2)
-    still_ok=True
-    i=0
-    while i<len(s1) and still_ok:
-        found=False
-        j=0
-        while j<len(s2) and not found:
-            if s1[i]==s2[j]:
-                Found=True
-            else:
-                j+=1
-        if found:
-            s2[j]=None
-        else:
-            still_ok=False
-        i+=1
-    return still_ok
-
 
 if __name__ == '__main__':
 	value = anagramSolution1('abcd','cdba')
 	print(value)
-	# va = anagram('heart','earth')
-	# print(va)
