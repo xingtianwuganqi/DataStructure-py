@@ -46,10 +46,38 @@ def parChecker(symbolString):
 		return False
 
 
+# 栈的应用：通用括号匹配算法
 
+def parChecker2(symbolString):
+	s = Stack()
+	balanced = True
+	index = 0
+	while index < len(symbolString) and balanced:
+		symbol = symbolString[index]
+		print(symbol)
+		if symbol in '([{':
+			s.push(symbol)
+		else:
+			if s.isEmpty():
+				balanced = False
+			else:
+				top = s.pop()
+				if not matches(top,symbol):
+					balanced = False
+		index = index + 1
+
+	if balanced and s.isEmpty():
+		return True
+	else:
+		return False
+
+def matches(open,close):
+	opens = '([{'
+	closes = ')]}'
+	return opens.index(open) == closes.index(close)
 
 if __name__ == '__main__':
-	value = parChecker('(())')
+	value = parChecker2('([]})')
 	print(value)
 
 
