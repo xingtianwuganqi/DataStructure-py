@@ -60,8 +60,47 @@ class SingleLinkList():
 			currentNode.next = node
 			self.length += 1
 
+	# 5.遍历
+	def travel(self):
+		currentNode = self.header
+		if self.length == 0:
+			print('要遍历的链表没有数据')
+			return 
+		else:
+			for i in range(self.length):
+				print('%s'%currentNode.element,end=" ")
+				currentNode = currentNode.next
+			print('\n')
+	# 6.排序不用交换节点的位置，只需要交换节点上的数据值
+	def list_sort(self):
+		for i  in range(0,self.length-1):
+			currentNode = self.header
+			for j in range(0,self.length - i - 1):
+				if currentNode.element > currentNode.next.element:
+					temp = currentNode.element
+					currentNode.element = currentNode.next.element
+					currentNode.next.element = temp
+				currentNode = currentNode.next
 
 
+	# 7、按索引删除
+	def remove(self,index):
+		if index < 0 or index > self.length:
+			print('输入的下标不对，请重新输入')
+			return 
+		else:
+			if index == 1:
+				self.header = self.header.next
+				currentNode = self.header
+			elif index == 2:
+				currentNode = self.header
+				currentNode.next = currentNode.next.next
+			else:
+				currentNode = self.header
+				for i in range(1,index-1):
+					currentNode = currentNode.next
+				currentNode.next = currentNode.next.next
+		self.length -= 1
 
 
 
