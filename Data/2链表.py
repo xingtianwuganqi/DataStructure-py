@@ -102,8 +102,48 @@ class SingleLinkList():
 				currentNode.next = currentNode.next.next
 		self.length -= 1
 
+	# 8.查询是否包含，并返回下标
+	def isContain(self,num):
+		contain = 0
+		currentNode = self.header
+		for i in range(self.length):
+			if currentNode.element == num:
+				print('%d在链表的%到处\n',(num,i))
+				contain = 1
+			currentNode = currentNode.next
+		return contain
 
 
+	# 9.根据下标找节点
+	def searchNodeByIndex(self,index):
+		currentNode = self.header
+		if index <= 0 or index > self.length:
+			print('输入的下标不对，请重新输入')
+			return None
+		else:
+			for i in range(index-1):
+				currentNode = currentNode.next
+			return currentNode
 
+	# 10.根据下标修改节点的值
+	def modifyByIndex(self,index,num):
+		currentNode = self.header
+		if index <= 0 or index > self.length:
+			print('输入的下标不对，请重新输入')
+			return None
+		else:
+			for i in range(index-1):
+				currentNode = currentNode.next
+			currentNode.element = num
+
+
+if __name__ == "__main__":
+	# 创建一个节点对象
+	node = Node(1)
+
+	# 创建一个单链表对象
+	single_link_list = SingleLinkList()
+
+	
 
 
